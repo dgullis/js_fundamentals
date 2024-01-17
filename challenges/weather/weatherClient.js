@@ -9,7 +9,7 @@ class WeatherClient {
     async fetchWeatherData(city) {
         try {
 
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=db3537ee5fc64a33025824fdca2bbfb7`)
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}`)
             
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);

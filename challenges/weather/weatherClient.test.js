@@ -1,38 +1,13 @@
-const weatherClient = require('./weatherClient.js')
-const client = new weatherClient();
+jest.setTimeout(80000);
 
-const jestFetchMock = require("jest-fetch-mock");
-jestFetchMock.enableMocks();
+const WeatherClient = require('./weatherClient.js');
+const client = new WeatherClient();
 
-describe("testing api", ()=> {
-    beforeEach(() => {
-        fetch.resetMocks();
+describe('testing api', () => {
+    test('returns info from api', async () => {
+        console.log("im here")
+        const data = await client.fetchWeatherData('London');
+        expect(data.city).toEqual('London');
+
+        });
     });
-
-    it('calls weather api and returns data', (done) => {
-        fetch.mockResponseOnce(JSON.stringify( {
-            weather: [
-                {
-                id: 804,
-                main: 'Clouds',
-                description: 'overcast clouds',
-                icon: '04d'
-                }
-            ],
-            main: {
-                temp: 292.15,
-                feels_like: 292.01,
-            },
-            
-        }));
-
-        client.fetchWeatherData('London')
-            .then((data) => {
-                expect(data.main).toEqual('Clouds');
-                expect(data.temp).toEqual(292.15)
-            });
-            expect(fetch).toHaveBeenCalledTimes(1);
-            done();
-    
-    });
-});

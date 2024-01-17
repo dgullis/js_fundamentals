@@ -1,15 +1,34 @@
+require('dotenv').config();
+
+
 class WeatherClient {
+    constructor() {
+        this.apiKey = process.env.OPEN_WEATHER_API_KEY
+    }
 
     async fetchWeatherData(city) {
-        return fetch(`http://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=a3d9eb01d4de82b9b8d0849ef604dbed`)
-            .then((response) => response.json())
-            .then((jsonData) => {
-                // console.log(jsonData)
-                return {
-                    main: jsonData.weather[0]['main'],
-                    temp: jsonData.main['temp']
-                }
-            })
+        try {
+
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=db3537ee5fc64a33025824fdca2bbfb7`)
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const jsonData = await response.json();
+            
+            return {
+                city: jsonData.name,
+                weather: jsonData.weather[0]['main'],
+                temp: jsonData.main['temp'],
+                feels_like: jsonData.main['feels_like'],
+                humidity: jsonData.main['humidity']    
+            };   
+        } catch (error) {
+            console.error('Error in fetchWeatherData:', error);
+            throw error;
+        }
     }
 }
-module.exports = WeatherClient
+
+module.exports = WeatherClient;

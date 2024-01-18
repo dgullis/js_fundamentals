@@ -40,9 +40,9 @@ class Thermostat {
     }
 
     setPowerSavingMode(status) {
-        if (status == false) {
+        if (status == 'false') {
             this.powerSavingMode = false;
-        } else if (status == true) {
+        } else if (status == 'true') {
             this.powerSavingMode = true;
         }
     };

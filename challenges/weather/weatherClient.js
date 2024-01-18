@@ -7,7 +7,7 @@ class WeatherClient {
     }
     fetchWeatherData(city) {
         return fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}`)
-            .then(response => console.log(response))
+            .then(response => response.json())
             .then(jsonData => {
                 console.log("json data: ", jsonData)
                 return {

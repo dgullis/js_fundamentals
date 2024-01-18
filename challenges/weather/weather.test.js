@@ -26,7 +26,7 @@ describe("test weather class", () => {
 
         expect(WeatherClient).toHaveBeenCalledTimes(1);
         expect(WeatherClient.mock.instances[0].fetchWeatherData).toHaveBeenCalledWith('London');
-        expect(weather.weatherReports).toEqual([{
+        expect(weather.loadedCity).toEqual([{
             city: 'London',
             weather: 'Clouds',
             temp: 1.51,

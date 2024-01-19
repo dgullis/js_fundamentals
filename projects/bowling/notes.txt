@@ -1,0 +1,24 @@
+logic
+
+STRIKE - needs to look at max next two rolls if they are both strikes
+SPARE - needs to look at max next one rolls
+
+needs to hold max 3 rolls in memory then clear it
+
+if strike - note strike in memory somewhere
+if second strike - note in memory somewhere
+if third strike - first strike score is calculated (30). 
+                - initial strike removed.
+                - this strike added.
+if 4th strike - second strike is calculated (30). 
+                - second strike removed
+                - this strike added
+if 5th strike - thrid strike is calculated (30).
+                - third strike removed 
+                - this strike added
+    if not strike e.g. first ball of frame is 6
+                - 4th strike is calculated (26)
+                - 4th strike removed
+                - second ball is 
+
+needs to hold max 3 balls at a time

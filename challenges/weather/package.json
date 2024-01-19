@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --setupFiles dotenv/config"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.6.5",
     "callback-fetch": "^0.0.1",
     "dotenv": "^16.3.1"
   },

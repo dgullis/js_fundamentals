@@ -2,6 +2,7 @@ const WeatherClient = require('./weatherClient.js');
 const Weather = require('./weather.js');
 const jestFetchMock = require("jest-fetch-mock");
 jest.mock('./weatherClient.js');
+require('jest-fetch-mock').enableMocks();
 jestFetchMock.enableMocks();
 
 

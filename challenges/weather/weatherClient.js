@@ -1,30 +1,22 @@
 require('dotenv').config();
 
-
 class WeatherClient {
     constructor() {
         this.apiKey = process.env.OPEN_WEATHER_API_KEY
     }
+
     fetchWeatherData(city) {
         return fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}`)
-            .then(response => console.log(response))
-            .then(jsonData => {
-                console.log("json data: ", jsonData)
-                return {
-                    city: jsonData.name,
-                    weather: jsonData.weather[0]['main'],
-                    temp: jsonData.main['temp'],
-                    feels_like: jsonData.main['feels_like'],
-                    humidity: jsonData.main['humidity']
-                }
-            });
-    
-    }
-
+                .then(response => response.json())
+        }
 }
+    
 
-const client = new WeatherClient();
-client.fetchWeatherData('London')
-    .then(response => console.log(response))
+
+
+// const client = new WeatherClient;
+// client.fetchWeatherData('London')
+//     .then(data=> console.log(data))
+
 
 module.exports = WeatherClient;

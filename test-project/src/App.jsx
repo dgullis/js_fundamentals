@@ -5,12 +5,17 @@ import './App.css'
 import React from "react";
 import Profile from "./Profile.jsx"
 import Product from './Product.jsx';
-
-
+import Counter from './Counter.jsx';
+import InputListener from './InputListener.jsx';
+import Die from './Die.jsx';
 const App = () => {
 
   return (
     <>
+      <InputListener/>
+      <Counter />
+      <Die />
+      
       <Profile 
         name="Makers Duck"
         job="duck"
